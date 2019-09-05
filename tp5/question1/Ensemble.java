@@ -15,33 +15,47 @@ public class Ensemble<T> extends AbstractSet<T> {
 	}
 
 	public boolean add(T t) {
-		// à compléter pour la question1-1
-
-		return false;
-	}
+	
+	if(this.table.contains(t))
+	{ return false;} 
+    else { this.table.add(t);
+		   return true;
+			} 
+    }
 
 	public Ensemble<T> union(Ensemble<? extends T> e) {
-		// à compléter pour la question1-2
+		
+	 Ensemble<T> un= new Ensemble<T>();
+     un.addAll(this);
+     un.addAll(e);
+     return un;
 
-		return null;
 	}
 
 	public Ensemble<T> inter(Ensemble<? extends T> e) {
-		// à compléter pour la question1-2
+	 Ensemble<T> in= new Ensemble<T>();
+     in.addAll(this);
+     in.retainAll(e);
+     return in;
 
-		return null;
 	}
 
 	public Ensemble<T> diff(Ensemble<? extends T> e) {
-		// à compléter pour la question1-2
-
-		return null;
+	 Ensemble<T> di= new Ensemble<T>();
+     di.addAll(this);
+     di.removeAll(e);
+     return di;	
 	}
 
 	Ensemble<T> diffSym(Ensemble<? extends T> e) {
-		// à compléter pour la question1-2
+	 Ensemble<T> dis = new Ensemble<T>();
+     Ensemble<T> dis1 = union(e);
+     Ensemble<T> dis2 = inter(e);
+     dis.addAll(dis1);
+     dis.removeAll(dis2);
+        
+     return dis;
 
-		return null;
 	}
 	
 }
